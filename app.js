@@ -47,6 +47,14 @@ app.post('/webhook/', function (req, res) {
             sendTextMessage(sender, "Tu destino es el siguiente")
             sendTextMessage(sender, "https://www.google.com.mx/maps/place/25.5534371,-100.2325287")
         }
+        else if (event.message && event.message.text == 'Gracias') {
+            let text = event.message.text
+            sendTextMessage(sender, "No hay de qué")
+        }
+        else if (event.message && event.message.text == 'Auxilio' || messageText == 'A' || messageText == 'a') {
+            let text = event.message.text
+            sendTextMessage(sender, "hooo")
+        }
         else if (event.message && event.message.text == 'Hola') {
         	var senderID = event.sender.id;
             let text = event.message.text
