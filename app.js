@@ -62,9 +62,6 @@ app.post('/webhook/', function (req, res) {
             sendButtonMessage1(senderID)
         }
         else if (event.message && event.message.text == 'Cuál es mi ruta?') {
-            let text = event.message.text
-            sendTextMessage(sender, "https://www.google.com.mx/maps/dir/25.6414205,-100.3220598/25.586760,-100.257281/")
-        	sendTextMessage(sender, "https://www.google.com.mx/maps/dir/25.6414205,-100.3220598/25.500974,-100.191265/")
         	sendGenericMessage(sender);
         }
         else {
@@ -152,10 +149,10 @@ function sendGenericMessage(sender) {
                 "elements": [{
                     "title": "Ruta a primera zona de descanso",
                     "subtitle": "Element #1 of an hscroll",
-                    "image_url": "https://www.google.com.mx/maps/dir/25.6414205,-100.3220598/25.586760,-100.257281/",
+                    "image_url": "/assets/route.png",
                     "buttons": [{
                         "type": "web_url",
-                        "url": "https://www.messenger.com",
+                        "url": "https://www.google.com.mx/maps/dir/25.6414205,-100.3220598/25.586760,-100.257281/",
                         "title": "web url"
                     }, {
                         "type": "postback",
@@ -165,11 +162,15 @@ function sendGenericMessage(sender) {
                 }, {
                     "title": "Ruta a segunda zona de descanso",
                     "subtitle": "Element #2 of an hscroll",
-                    "image_url": "https://www.google.com.mx/maps/dir/25.6414205,-100.3220598/25.500974,-100.191265/",
+                    "image_url": "/assets/route.png",
                     "buttons": [{
+                        "type": "web_url",
+                        "url": "https://www.google.com.mx/maps/dir/25.6414205,-100.3220598/25.500974,-100.191265/",
+                        "title": "web url"
+                    }, {
                         "type": "postback",
                         "title": "Postback",
-                        "payload": "Payload for second element in a generic bubble",
+                        "payload": "Payload for first element in a generic bubble",
                     }],
                 }]
             }
