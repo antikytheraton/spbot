@@ -52,7 +52,8 @@ app.post('/webhook/', function (req, res) {
         }
         else if (event.message && event.message.text == 'Auxilio' || messageText == 'A' || messageText == 'a') {
             let text = event.message.text
-            sendButtonMessage(sender);
+            var senderID = event.sender.id;
+            sendButtonMessage(senderID);
         }
     }
     res.sendStatus(200)
@@ -90,19 +91,11 @@ function sendButtonMessage(recipientId) {
         type: "template",
         payload: {
           template_type: "button",
-          text: "This is test text",
+          text: "Llamada de auxilio",
           buttons:[{
-            type: "web_url",
-            url: "https://www.oculus.com/en-us/rift/",
-            title: "Open Web URL"
-          }, {
-            type: "postback",
-            title: "Trigger Postback",
-            payload: "DEVELOPER_DEFINED_PAYLOAD"
-          }, {
             type: "phone_number",
             title: "Call Phone Number",
-            payload: "+16505551234"
+            payload: "+525534592414"
           }]
         }
       }
