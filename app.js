@@ -56,9 +56,18 @@ app.post('/webhook/', function (req, res) {
             let text = event.message.text
             sendButtonMessage(senderID)
         }
-        else if (event.message && event.message.text == 'que') {
+        else if (event.message && event.message.text == 'Comunicame con el supervisor') {
+            var senderID = event.sender.id;
             let text = event.message.text
-            sendTextMessage(sender, "https://www.google.com.mx/maps/dir/25.6414205,-100.3220598/25.500974,-100.191265/")
+            sendButtonMessage1(senderID)
+        }
+        else if (event.message && event.message.text == 'Cual es es mi ruta?') {
+            let text = event.message.text
+            var senderID = event.sender.id;
+            sendTextMessage(sender, "https://www.google.com.mx/maps/dir/25.6414205,-100.3220598/25.586760,-100.257281/")
+        	sendTextMessage(sender, "No te entiendo")
+        	sendTextMessage(sender, "https://www.google.com.mx/maps/dir/25.6414205,-100.3220598/25.500974,-100.191265/")
+        	sendGenericMessage(senderID);
         }
         else {
             sendTextMessage(sender, "No te entiendo")
@@ -104,6 +113,76 @@ function sendButtonMessage(recipientId) {
             type: "phone_number",
             title: "Call Phone Number",
             payload: "5534592414"
+          }]
+        }
+      }
+    }
+  };  
+
+  callSendAPI(messageData);
+}
+function sendButtonMessage1(recipientId) {
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+      attachment: {
+        type: "template",
+        payload: {
+          template_type: "button",
+          text: "Supervisor",
+          buttons:[{
+            type: "phone_number",
+            title: "Call Phone Number",
+            payload: "5521288488"
+          }]
+        }
+      }
+    }
+  };  
+
+  callSendAPI(messageData);
+}
+
+function sendGenericMessage(recipientId) {
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+      attachment: {
+        type: "template",
+        payload: {
+          template_type: "generic",
+          elements: [{
+            title: "rift",
+            subtitle: "Next-generation virtual reality",
+            item_url: "https://www.oculus.com/en-us/rift/",               
+            image_url: SERVER_URL + "/assets/rift.png",
+            buttons: [{
+              type: "web_url",
+              url: "https://www.oculus.com/en-us/rift/",
+              title: "Open Web URL"
+            }, {
+              type: "postback",
+              title: "Call Postback",
+              payload: "Payload for first bubble",
+            }],
+          }, {
+            title: "touch",
+            subtitle: "Your Hands, Now in VR",
+            item_url: "https://www.oculus.com/en-us/touch/",               
+            image_url: SERVER_URL + "/assets/touch.png",
+            buttons: [{
+              type: "web_url",
+              url: "https://www.oculus.com/en-us/touch/",
+              title: "Open Web URL"
+            }, {
+              type: "postback",
+              title: "Call Postback",
+              payload: "Payload for second bubble",
+            }]
           }]
         }
       }
