@@ -153,11 +153,7 @@ function sendGenericMessage(sender) {
                     "buttons": [{
                         "type": "web_url",
                         "url": "https://www.google.com.mx/maps/dir/25.6414205,-100.3220598/25.586760,-100.257281/",
-                        "title": "web url"
-                    }, {
-                        "type": "postback",
-                        "title": "Postback",
-                        "payload": "Payload for first element in a generic bubble",
+                        "title": "Mapa"
                     }],
                 }, {
                     "title": "Ruta a segunda zona de descanso",
@@ -166,11 +162,7 @@ function sendGenericMessage(sender) {
                     "buttons": [{
                         "type": "web_url",
                         "url": "https://www.google.com.mx/maps/dir/25.6414205,-100.3220598/25.500974,-100.191265/",
-                        "title": "web url"
-                    }, {
-                        "type": "postback",
-                        "title": "Postback",
-                        "payload": "Payload for first element in a generic bubble",
+                        "title": "Mapa"
                     }],
                 }]
             }
