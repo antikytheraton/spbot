@@ -52,7 +52,7 @@ app.post('/webhook/', function (req, res) {
         }
         else if (event.message && event.message.text == 'Auxilio' || messageText == 'A' || messageText == 'a') {
             let text = event.message.text
-            sendButtonMessage(recipientId)
+            sendButtonMessage(senderID)
         }
         else {
             let text = event.message.text
