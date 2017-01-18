@@ -74,7 +74,7 @@ function sendTextMessage(sender, text) {
         }
     })
 }
-
+/*
 function sendButtonMessage(recipientId) {
   var messageData = {
     recipient: {
@@ -106,7 +106,7 @@ function sendButtonMessage(recipientId) {
 
   callSendAPI(messageData);
 }
-/*
+
 function callSendAPI(messageData) {
   request({
     uri: 'https://graph.facebook.com/v2.6/me/messages',
