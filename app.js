@@ -149,7 +149,7 @@ function sendGenericMessage(sender) {
                 "elements": [{
                     "title": "Ruta a primera zona de descanso",
                     "subtitle": "",
-                    "image_url": "https://polar-plateau-39790.herokuapp.com/assets/route.png",
+                    "image_url": "http://image.flaticon.com/icons/svg/148/148846.svg",
                     "buttons": [{
                         "type": "web_url",
                         "url": "https://www.google.com.mx/maps/dir/25.6414205,-100.3220598/25.586760,-100.257281/",
@@ -158,7 +158,7 @@ function sendGenericMessage(sender) {
                 }, {
                     "title": "Ruta a segunda zona de descanso",
                     "subtitle": "",
-                    "image_url": "https://polar-plateau-39790.herokuapp.com/assets/route.png",
+                    "image_url": "http://image.flaticon.com/icons/svg/148/148846.svg",
                     "buttons": [{
                         "type": "web_url",
                         "url": "https://www.google.com.mx/maps/dir/25.6414205,-100.3220598/25.500974,-100.191265/",
