@@ -32,16 +32,27 @@ app.listen(app.get('port'), function() {
 })
 app.post('/webhook/', function (req, res) {
     let messaging_events = req.body.entry[0].messaging
+
     for (let i = 0; i < messaging_events.length; i++) {
         let event = req.body.entry[0].messaging[i]
         let sender = event.sender.id
-        if (event.message && event.message.text) {
+        if (event.message && event.message.text == 'Hi') {
             let text = event.message.text
-            sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
+            sendTextMessage(sender, "Hi" + text.substring(0, 200))
+        }
+        if (event.message && event.message.text == 'Hola') {
+            let text = event.message.text
+            sendTextMessage(sender, "hola")
+        }
+        if (event.message && event.message.text == 'que') {
+            let text = event.message.text
+            sendTextMessage(sender, "https://www.google.com.mx/maps/dir/25.6414205,-100.3220598/25.500974,-100.191265/")
         }
     }
     res.sendStatus(200)
 })
+//https://www.google.com.mx/maps/dir/25.6414205,-100.3220598/25.586760,-100.257281/
+//https://www.google.com.mx/maps/dir/25.6414205,-100.3220598/25.500974,-100.191265/
 
 const token = process.env.FB_PAGE_ACCESS_TOKEN_BOT
 
