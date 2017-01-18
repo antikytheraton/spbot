@@ -51,12 +51,8 @@ app.post('/webhook/', function (req, res) {
             let text = event.message.text
             sendTextMessage(sender, "No hay de qué")
         }
-        else if (event.message && event.message.text == 'Auxilio' || messageText == 'A' || messageText == 'a') {
-            let text = event.message.text
-            sendTextMessage(sender, "hooo")
-        }
-        else if (event.message && event.message.text == 'Hola') {
-        	var senderID = event.sender.id;
+        else if (event.message && event.message.text == 'Auxilio' || event.message.text == 'A' || event.message.text == 'a') {
+            var senderID = event.sender.id;
             let text = event.message.text
             sendButtonMessage(senderID)
         }
@@ -65,7 +61,7 @@ app.post('/webhook/', function (req, res) {
             sendTextMessage(sender, "https://www.google.com.mx/maps/dir/25.6414205,-100.3220598/25.500974,-100.191265/")
         }
         else {
-            sendTextMessage(sender, "Hi")
+            sendTextMessage(sender, "No te entiendo")
         }
     }
     res.sendStatus(200)
