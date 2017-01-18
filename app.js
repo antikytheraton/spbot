@@ -55,6 +55,9 @@ app.post('/webhook/', function (req, res) {
             var senderID = event.sender.id;
             sendButtonMessage(senderID)
         }
+        else {
+        	sendTextMessage(sender, "No entiendo")
+        }
     }
     res.sendStatus(200)
 })
