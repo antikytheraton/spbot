@@ -148,7 +148,7 @@ function sendGenericMessage(sender) {
                 "template_type": "generic",
                 "elements": [{
                     "title": "Ruta a primera zona de descanso",
-                    "subtitle": "Element #1 of an hscroll",
+                    "subtitle": "",
                     "image_url": "https://www.google.com.mx/maps/dir/25.6414205,-100.3220598/25.586760,-100.257281/",
                     "buttons": [{
                         "type": "web_url",
@@ -157,7 +157,7 @@ function sendGenericMessage(sender) {
                     }],
                 }, {
                     "title": "Ruta a segunda zona de descanso",
-                    "subtitle": "Element #2 of an hscroll",
+                    "subtitle": "",
                     "image_url": "https://www.google.com.mx/maps/dir/25.6414205,-100.3220598/25.500974,-100.191265/",
                     "buttons": [{
                         "type": "web_url",
