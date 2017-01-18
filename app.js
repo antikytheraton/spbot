@@ -32,111 +32,16 @@ app.listen(app.get('port'), function() {
 })
 app.post('/webhook/', function (req, res) {
     let messaging_events = req.body.entry[0].messaging
-    var senderID = event.sender.id;
     for (let i = 0; i < messaging_events.length; i++) {
         let event = req.body.entry[0].messaging[i]
         let sender = event.sender.id
-        if (event.message && event.message.text == 'Hola') {
+        if (event.message && event.message.text) {
             let text = event.message.text
-            sendTextMessage(sender, "Buen dia")
-            sendTextMessage(sender, "¿En que puedo ayudarte?")
+            sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
         }
-        else if (event.message && event.message.text == 'Quiero saber mi destino') {
-            let text = event.message.text
-            sendTextMessage(sender, "Tu destino es el siguiente")
-            sendTextMessage(sender, "https://www.google.com.mx/maps/place/25.5534371,-100.2325287")
-        }
-        else if (event.message && event.message.text == 'Gracias') {
-            let text = event.message.text
-            sendTextMessage(sender, "No hay de que")
-        }
-        else if (event.message && event.message.text == 'Auxilio' || messageText == 'A' || messageText == 'a') {
-            let text = event.message.text
-            sendButtonMessage(senderID)
-        }
-        else {
-            let text = event.message.text
-            sendTextMessage(sender, "No te entendi")
-        }
-
+    }
     res.sendStatus(200)
 })
-//https://www.google.com.mx/maps/dir/25.6414205,-100.3220598/25.586760,-100.257281/
-//https://www.google.com.mx/maps/dir/25.6414205,-100.3220598/25.500974,-100.191265/
 
-const token = process.env.FB_PAGE_ACCESS_TOKEN_BOT
-
-function sendTextMessage(sender, text) {
-    let messageData = { text:text }
-    request({
-        url: 'https://graph.facebook.com/v2.6/me/messages',
-        qs: {access_token:token},
-        method: 'POST',
-        json: {
-            recipient: {id:sender},
-            message: messageData,
-        }
-    }, function(error, response, body) {
-        if (error) {
-            console.log('Error sending messages: ', error)
-        } else if (response.body.error) {
-            console.log('Error: ', response.body.error)
-        }
-    })
-}
-
-function sendButtonMessage(recipientId) {
-  var messageData = {
-    recipient: {
-      id: recipientId
-    },
-    message: {
-      attachment: {
-        type: "template",
-        payload: {
-          template_type: "button",
-          text: "This is test text",
-          buttons:[{
-            type: "web_url",
-            url: "https://www.oculus.com/en-us/rift/",
-            title: "Open Web URL"
-          }, {
-            type: "postback",
-            title: "Trigger Postback",
-            payload: "DEVELOPER_DEFINED_PAYLOAD"
-          }, {
-            type: "phone_number",
-            title: "Call Phone Number",
-            payload: "5534592414"
-          }]
-        }
-      }
-    }
-  };  
-
-  callSendAPI(messageData);
-}
-function callSendAPI(messageData) {
-  request({
-    uri: 'https://graph.facebook.com/v2.6/me/messages',
-    qs: { access_token: PAGE_ACCESS_TOKEN },
-    method: 'POST',
-    json: messageData
-
-  }, function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-      var recipientId = body.recipient_id;
-      var messageId = body.message_id;
-
-      if (messageId) {
-        console.log("Successfully sent message with id %s to recipient %s", 
-          messageId, recipientId);
-      } else {
-      console.log("Successfully called Send API for recipient %s", 
-        recipientId);
-      }
-    } else {
-      console.error("Failed calling Send API", response.statusCode, response.statusMessage, body.error);
-    }
-  });  
-}
+const token = "<PAGE_ACCESS_TOKEN>"
+const token = process.env.FB_PAGE_ACCESS_TOKEN
