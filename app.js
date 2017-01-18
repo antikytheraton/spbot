@@ -31,37 +31,33 @@ app.listen(app.get('port'), function() {
     console.log('running on port', app.get('port'))
 })
 app.post('/webhook/', function (req, res) {
-	var senderID = event.sender.id;
- 	var message = event.message;
- 	var messageText = message.text;
-  	var messageAttachments = message.attachments;
-  	var quickReply = message.quick_reply;
-
-
     let messaging_events = req.body.entry[0].messaging
 
     for (let i = 0; i < messaging_events.length; i++) {
         let event = req.body.entry[0].messaging[i]
         let sender = event.sender.id
-        if (messageText == 'Hola') {
-            let text = messageText
+        if (event.message && event.message.text == 'Hi') {
+            let text = event.message.text
+            sendTextMessage(sender, "Hi" + text.substring(0, 200))
+        }
+        if (event.message && event.message.text == 'Hola') {
+            let text = event.message.text
             sendTextMessage(sender, "Buen día")
             sendTextMessage(sender, "¿En qué puedo ayudarte?")
         }
-        else if (messageText == 'Quiero saber mi destino') {
-            let text = messageText
+        else if (event.message && event.message.text == 'Quiero saber mi destino') {
+            let text = event.message.text
             sendTextMessage(sender, "Tu destino es el siguiente")
             sendTextMessage(sender, "https://www.google.com.mx/maps/place/25.5534371,-100.2325287")
         }
-        else if (messageText == 'Gracias') {
-            let text = messageText
+        else if (event.message && event.message.text == 'Gracias') {
+            let text = event.message.text
             sendTextMessage(sender, "No hay de qué")
         }
-        else if (messageText == 'Auxilio' || messageText == 'A' || messageText == 'a') {
-            let text = messageText
-            sendButtonMessage(senderID);
+        else if (event.message && event.message.text == 'Auxilio' || messageText == 'A' || messageText == 'a') {
+            let text = event.message.text
+            sendTextMessage(sender, "No hay de qué")
         }
-    }
     res.sendStatus(200)
 })
 //https://www.google.com.mx/maps/dir/25.6414205,-100.3220598/25.586760,-100.257281/
