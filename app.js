@@ -43,8 +43,7 @@ app.post('/webhook/', function (req, res) {
         if (event.message && event.message.text == 'Hola') {
         	var senderID = event.sender.id;
             let text = event.message.text
-            sendTextMessage(sender, "Hi" + text.substring(0, 200))
-            //sendButtonMessage(senderID)
+            sendButtonMessage(senderID)
         }
         if (event.message && event.message.text == 'que') {
             let text = event.message.text
@@ -75,7 +74,7 @@ function sendTextMessage(sender, text) {
         }
     })
 }
-/*
+
 function sendButtonMessage(recipientId) {
   var messageData = {
     recipient: {
@@ -132,5 +131,5 @@ function callSendAPI(messageData) {
     }
   });  
 }
-*/
+
 const token = process.env.FB_PAGE_ACCESS_TOKEN_BOT
