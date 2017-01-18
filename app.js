@@ -31,7 +31,7 @@ app.listen(app.get('port'), function() {
     console.log('running on port', app.get('port'))
 })
 app.post('/webhook/', function (req, res) {
-	//var senderID = event.sender.id;
+	var senderID = event.sender.id;
     let messaging_events = req.body.entry[0].messaging
 
     for (let i = 0; i < messaging_events.length; i++) {
@@ -43,6 +43,7 @@ app.post('/webhook/', function (req, res) {
         }
         if (event.message && event.message.text == 'Hola') {
             let text = event.message.text
+            sendTextMessage(sender, "Hi" + text.substring(0, 200))
             //sendButtonMessage(senderID)
         }
         if (event.message && event.message.text == 'que') {
