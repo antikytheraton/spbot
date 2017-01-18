@@ -53,7 +53,7 @@ app.post('/webhook/', function (req, res) {
         else if (event.message && event.message.text == 'Auxilio' || messageText == 'A' || messageText == 'a') {
             let text = event.message.text
             var senderID = event.sender.id;
-            sendButtonMessage(senderID);
+            sendButtonMessage(senderID)
         }
     }
     res.sendStatus(200)
