@@ -32,18 +32,14 @@ app.listen(app.get('port'), function() {
 })
 app.post('/webhook/', function (req, res) {
     let messaging_events = req.body.entry[0].messaging
-
+    var senderID = event.sender.id;
     for (let i = 0; i < messaging_events.length; i++) {
         let event = req.body.entry[0].messaging[i]
         let sender = event.sender.id
-        if (event.message && event.message.text == 'Hi') {
-            let text = event.message.text
-            sendTextMessage(sender, "Hi" + text.substring(0, 200))
-        }
         if (event.message && event.message.text == 'Hola') {
             let text = event.message.text
-            sendTextMessage(sender, "Buen día")
-            sendTextMessage(sender, "¿En qué puedo ayudarte?")
+            sendTextMessage(sender, "Buen dia")
+            sendTextMessage(sender, "¿En que puedo ayudarte?")
         }
         else if (event.message && event.message.text == 'Quiero saber mi destino') {
             let text = event.message.text
@@ -52,12 +48,17 @@ app.post('/webhook/', function (req, res) {
         }
         else if (event.message && event.message.text == 'Gracias') {
             let text = event.message.text
-            sendTextMessage(sender, "No hay de qué")
+            sendTextMessage(sender, "No hay de que")
         }
         else if (event.message && event.message.text == 'Auxilio' || messageText == 'A' || messageText == 'a') {
             let text = event.message.text
-            sendTextMessage(sender, "No hay de qué")
+            sendButtonMessage(recipientId)
         }
+        else {
+            let text = event.message.text
+            sendTextMessage(sender, "No te entendi")
+        }
+
     res.sendStatus(200)
 })
 //https://www.google.com.mx/maps/dir/25.6414205,-100.3220598/25.586760,-100.257281/
