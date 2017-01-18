@@ -167,10 +167,6 @@ function sendGenericMessage(sender) {
                         "type": "web_url",
                         "url": "https://www.google.com.mx/maps/dir/25.6414205,-100.3220598/25.500974,-100.191265/",
                         "title": "web url"
-                    }, {
-                        "type": "postback",
-                        "title": "Postback",
-                        "payload": "Payload for first element in a generic bubble",
                     }],
                 }]
             }
