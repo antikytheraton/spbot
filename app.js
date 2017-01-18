@@ -36,18 +36,23 @@ app.post('/webhook/', function (req, res) {
     for (let i = 0; i < messaging_events.length; i++) {
         let event = req.body.entry[0].messaging[i]
         let sender = event.sender.id
-        if (event.message && event.message.text == 'Hi') {
-            let text = event.message.text
-            sendTextMessage(sender, "Hi" + text.substring(0, 200))
-        }
         if (event.message && event.message.text == 'Hola') {
-        	var senderID = event.sender.id;
             let text = event.message.text
-            sendButtonMessage(senderID)
+            sendTextMessage(sender, "Buen día")
+            sendTextMessage(sender, "¿En qué puedo ayudarte?")
         }
-        if (event.message && event.message.text == 'que') {
+        else if (event.message && event.message.text == 'Quiero saber mi destino') {
             let text = event.message.text
-            sendTextMessage(sender, "https://www.google.com.mx/maps/dir/25.6414205,-100.3220598/25.500974,-100.191265/")
+            sendTextMessage(sender, "Tu destino es el siguiente")
+            sendTextMessage(sender, "https://www.google.com.mx/maps/place/25.5534371,-100.2325287")
+        }
+        else if (event.message && event.message.text == 'Gracias') {
+            let text = event.message.text
+            sendTextMessage(sender, "No hay de qué")
+        }
+        else if (event.message && event.message.text == 'Auxilio' || messageText == 'A' || messageText == 'a') {
+            let text = event.message.text
+            sendButtonMessage(sender);
         }
     }
     res.sendStatus(200)
