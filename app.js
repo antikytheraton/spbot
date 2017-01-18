@@ -40,12 +40,12 @@ app.post('/webhook/', function (req, res) {
             let text = event.message.text
             sendTextMessage(sender, "Hi" + text.substring(0, 200))
         }
-        if (event.message && event.message.text == 'Hola') {
+        else if (event.message && event.message.text == 'Hola') {
         	var senderID = event.sender.id;
             let text = event.message.text
             sendButtonMessage(senderID)
         }
-        if (event.message && event.message.text == 'que') {
+        else if (event.message && event.message.text == 'que') {
             let text = event.message.text
             sendTextMessage(sender, "https://www.google.com.mx/maps/dir/25.6414205,-100.3220598/25.500974,-100.191265/")
         }
