@@ -61,10 +61,9 @@ app.post('/webhook/', function (req, res) {
             let text = event.message.text
             sendButtonMessage1(senderID)
         }
-        else if (event.message && event.message.text == 'Cual es es mi ruta?') {
+        else if (event.message && event.message.text == 'Cuál es mi ruta?') {
             let text = event.message.text
             sendTextMessage(sender, "https://www.google.com.mx/maps/dir/25.6414205,-100.3220598/25.586760,-100.257281/")
-        	sendTextMessage(sender, "Deb")
         	sendTextMessage(sender, "https://www.google.com.mx/maps/dir/25.6414205,-100.3220598/25.500974,-100.191265/")
         	sendGenericMessage(sender);
         }
@@ -151,26 +150,20 @@ function sendGenericMessage(sender) {
             "payload": {
                 "template_type": "generic",
                 "elements": [{
-                    "title": "First card",
-                    "subtitle": "Element #1 of an hscroll",
-                    "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
+                    "title": "Ruta a primera zona de descanso",
+                    "image_url": "/assets/ruote.png",
                     "buttons": [{
                         "type": "web_url",
-                        "url": "https://www.messenger.com",
-                        "title": "web url"
-                    }, {
-                        "type": "postback",
-                        "title": "Postback",
-                        "payload": "Payload for first element in a generic bubble",
+                        "url": "https://www.google.com.mx/maps/dir/25.6414205,-100.3220598/25.586760,-100.257281/",
+                        "title": "Mapa"
                     }],
                 }, {
-                    "title": "Second card",
-                    "subtitle": "Element #2 of an hscroll",
-                    "image_url": "http://messengerdemo.parseapp.com/img/gearvr.png",
+                    "title": "Ruta a segunda zona de descanso",
+                    "image_url": "/assets/ruote.png",
                     "buttons": [{
-                        "type": "postback",
-                        "title": "Postback",
-                        "payload": "Payload for second element in a generic bubble",
+                        "type": "web_url",
+                        "url": "https://www.google.com.mx/maps/dir/25.6414205,-100.3220598/25.586760,-100.257281/",
+                        "title": "Mapa"
                     }],
                 }]
             }
