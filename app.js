@@ -44,8 +44,8 @@ app.post('/webhook/', function (req, res) {
         }
         else if (event.message && event.message.text == 'Quiero saber mi ruta al trabajo') {
             let text = event.message.text
-            sendTextMessage(sender, "Tu destino es el siguiente")
-            sendTextMessage(sender, "https://www.google.com.mx/maps/dir/19.402931, -99.166555/19.4344717,-99.1617392/")
+            sendTextMessage(sender, "Tu ruta es la siguiente")
+            sendTextMessage(sender, "https://www.google.com.mx/maps/dir/19.402931,-99.166555/19.4344717,-99.1617392/")
         }
         else if (event.message && event.message.text == 'Gracias') {
             let text = event.message.text
@@ -138,6 +138,7 @@ function sendButtonMessage1(recipientId) {
 
   callSendAPI(messageData);
 }
+
 
 function sendGenericMessage(sender) {
     let messageData = {
