@@ -129,8 +129,7 @@ function sendButtonMessage1(recipientId) {
           text: "Supervisor",
           buttons:[{
             type: "phone_number",
-            title: "Call Phone Number",
-            payload: "5521288488"
+            title: "Call Phone Number"
           }]
         }
       }
