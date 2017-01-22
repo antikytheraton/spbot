@@ -42,10 +42,10 @@ app.post('/webhook/', function (req, res) {
             sendTextMessage(sender, "Buen día")
             sendTextMessage(sender, "¿En qué puedo ayudarte?")
         }
-        else if (event.message && event.message.text == 'Quiero saber mi destino') {
+        else if (event.message && event.message.text == 'Quiero saber mi ruta al trabajo') {
             let text = event.message.text
             sendTextMessage(sender, "Tu destino es el siguiente")
-            sendTextMessage(sender, "https://www.google.com.mx/maps/place/25.5534371,-100.2325287")
+            sendTextMessage(sender, "https://www.google.com.mx/maps/dir/19.402931, -99.166555/19.4344717,-99.1617392/")
         }
         else if (event.message && event.message.text == 'Gracias') {
             let text = event.message.text
