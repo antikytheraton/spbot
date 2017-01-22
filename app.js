@@ -20,7 +20,7 @@ app.get('/', function (req, res) {
 
 // for Facebook verification
 app.get('/webhook/', function (req, res) {
-    if (req.query['hub.verify_token'] === 'track_bot_mariachi_chepo') {
+    if (req.query['hub.verify_token'] === 'test-bot-mariachiio') {
         res.send(req.query['hub.challenge'])
     }
     res.send('Error, wrong token')
@@ -209,4 +209,4 @@ function callSendAPI(messageData) {
   });  
 }
 
-const token = process.env.FB_PAGE_ACCESS_TOKEN_BOT
+const token = process.env.FB_PAGE_ACCESS_TOKEN_TEST_BOT
