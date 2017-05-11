@@ -103,12 +103,18 @@ function sendButtonMessage(recipientId) {
         type: "template",
         payload: {
           template_type: "button",
-          text: "LLAMADA DE AUXILIO",
+          text: "What do you want to do next?",
           buttons:[{
             type: "phone_number",
             title: "Call Phone Number",
             payload: "5534592414"
-          }]
+          },
+          {
+            "type":"web_url",
+            "url":"https://petersapparel.parseapp.com",
+            "title":"Show Website"
+          }
+          ]
         }
       }
     }
